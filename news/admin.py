@@ -5,3 +5,4 @@ class DisplayDate(admin.ModelAdmin):
     readonly_fields = ('date', )
 
 admin.site.register(Article, DisplayDate)  
+
