@@ -22,26 +22,29 @@ class ArticleList(generics.ListCreateAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
-@api_view(['GET', 'PUT', 'DELETE'])
-def article_detail(request, articleId):
-    try:
-        article = Article.objects.get(pk=articleId)
-    except Article.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+# @api_view(['GET', 'PUT', 'DELETE'])
+# def article_detail(request, articleId):
+#     try:
+#         article = Article.objects.get(pk=articleId)
+#     except Article.DoesNotExist:
+#         return Response(status=status.HTTP_404_NOT_FOUND)
     
-    if request.method == 'GET':
-        serializer = ArticleSerializer(article)
-        return Response (serializer.data)
+#     if request.method == 'GET':
+#         serializer = ArticleSerializer(article)
+#         return Response (serializer.data)
         
-    elif request.method == 'PUT':
-        serializer = ArticleSerializer(instance=article, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+#     elif request.method == 'PUT':
+#         serializer = ArticleSerializer(instance=article, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
 
-    elif request.method == 'DELETE':
-        article.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+#     elif request.method == 'DELETE':
+#         article.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
 
+class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
 
 
