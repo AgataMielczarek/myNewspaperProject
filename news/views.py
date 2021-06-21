@@ -97,17 +97,6 @@ class ArticleDetail(APIView):
             return Response ({'response': "You don't have permission to delete this object"})
 
 
-
-
-
-
-
-
-
-
-    
-
-
 # class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
 #     queryset = Article.objects.all()
 #     serializer_class = ArticleSerializer
