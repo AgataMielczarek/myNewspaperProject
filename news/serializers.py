@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.fields import ReadOnlyField
 from .models import Article
 from django.contrib.auth.models import User
 
@@ -6,6 +7,7 @@ class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = ('id', 'title', 'email', 'date', 'owner')
+        read_only_fields = ('owner',)
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -20,6 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+        
 
 
 

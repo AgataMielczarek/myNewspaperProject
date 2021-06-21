@@ -48,6 +48,12 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        #'rest_framework.permissions.IsAuthenticated', 
+        # blokowanie dostepu do wszystkich funkcji
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly', 
+        #blokowanie modyfikacji i tworzenia (wyswietlanie i odczyt)
+    ]
 }
 
 MIDDLEWARE = [
